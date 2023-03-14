@@ -27,7 +27,7 @@ client.Pets.ChildAdded:Connect(function(pet)
     
     local WebhookData = {
         ["embeds"] = {{
-            ["title"] = client.Name .." hatched a ".. pet._Upgrade.Value .. pet._Name.Value,
+            ["title"] = client.Name .." hatched a ".. pet._Upgrade.Value .." ".. pet._Name.Value,
             ["color"] = 0x00ff36,
             ["footer"] = {
                 ["text"] = '🥚 '.. shorten.Comma(client.leaderstats.Eggs.Value)
