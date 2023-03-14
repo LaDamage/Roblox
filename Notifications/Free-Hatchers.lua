@@ -19,9 +19,7 @@ local beginTick = tick()
 local shorten = loadstring(game:HttpGet("https://raw.githubusercontent.com/LaDamage/Roblox/main/number-library.lua"))()
 
 --[ Data Libraries ]--
-getgenv().ScriptData = {
-    Version = "1.0.0"
-}
+getgenv().ScriptData = {Version = "1.0.0"}
 
 --[ Webhook Data Collecter & Sender ]--
 client.Pets.ChildAdded:Connect(function(pet)
@@ -29,7 +27,7 @@ client.Pets.ChildAdded:Connect(function(pet)
     
     local WebhookData = {
         ["embeds"] = {{
-            ["title"] = client.Name .." hatched a ".. pet._Name.Value,
+            ["title"] = client.Name .." hatched a ".. pet._Upgrade.Value .. pet._Name.Value,
             ["color"] = 0x00ff36,
             ["footer"] = {
                 ["text"] = '🥚 '.. shorten.Comma(client.leaderstats.Eggs.Value)
@@ -38,8 +36,10 @@ client.Pets.ChildAdded:Connect(function(pet)
             ["timestamp"] = DateTime.now():ToIsoDate()
         }}
     }
+    print("got data")
 
     request({Url= getgenv().Webhook, Body = game:GetService("HttpService"):JSONEncode(WebhookData), Method = "POST", Headers = {["content-type"] = "application/json"}})
+    print("sent data")
 end)
 
 warn("[!] Free Hatchers Hatch Notifications Loaded!")
