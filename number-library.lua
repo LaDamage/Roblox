@@ -18,6 +18,14 @@ function NumberLibrary.CutDigits(x)
 	return string.format("%.2f", x)
 end
 
+function NumberLibrary.Comma(value)
+	value = tostring(value)
+	return value:reverse():gsub("%d%d%d", "%1,"):reverse():gsub("^,", "")
+end
+
+function NumberLibrary.Decimal(value, decimals)
+	return tonumber(string.format("%." .. (decimals) .. "f", value))
+end
 
 function NumberLibrary.Abbreviate(number, digits)
 	if number == 0 then return number end
@@ -31,7 +39,7 @@ function NumberLibrary.Abbreviate(number, digits)
 	return NumberLibrary.CutDigits(number / 1000^(suffix)) .. ( NumberLibrary.Prefixes[math.floor(suffix)] or "")
 end
 
-NumberLibrary.TimeFlow = function(val)
+function NumberLibrary.TimeFlow(val)
 	if not tonumber(val) then return val end
 
 	local days = math.floor(val / 86400)
