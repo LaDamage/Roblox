@@ -29,7 +29,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    while task.wait(PostDelay * 60)
+    while task.wait(60 * PostDelay) do
         local TrackData = {
             ["embeds"] = {{
                 ["title"] = "Rebirth Tracker",
@@ -40,17 +40,17 @@ task.spawn(function()
                     ["inline"] = false
                 },
                 {
-                    ["name"] = "⌛ Rebirths Pet Minute",
+                    ["name"] = "⌛ Rebirths Per Minute",
                     ["value"] = shorten.Abbreviate(StatData["diff_rebirths"]),
                     ["inline"] = false
                 },
                 {
-                    ["name"] = "⌛ Rebirths Pet Hour",
+                    ["name"] = "⌛ Rebirths Per Hour",
                     ["value"] = shorten.Abbreviate(StatData["diff_rebirths"] * 60),
                     ["inline"] = false
                 },
                 {
-                    ["name"] = "⌛ Rebirths Pet Day",
+                    ["name"] = "⌛ Rebirths Per Day",
                     ["value"] = shorten.Abbreviate(StatData["diff_rebirths"] * 1440),
                     ["inline"] = false
                 }
