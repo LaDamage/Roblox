@@ -43,6 +43,7 @@ local AutoStars = FarmingSection:CreateToggle("Auto Collect Stars", false, Color
         local thing = nearest()
         if thing then
             rootpart.CFrame = thing.MainPart.CFrame
+            game.Players.LocalPlayer.Character.Humanoid.Jump = true
         end
     end
 end)
