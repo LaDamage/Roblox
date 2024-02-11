@@ -24,14 +24,14 @@ tab1.newToggle("Auto Exp", "Collect all exp orbs", false, function(bool)
     end
 end)
 
-tab1.newToggle("Auto Stars", "Collect all stars orbs (event)", false, function(bool)
-    _G.AutoStars = bool
-    
-    while _G.AutoStars and task.wait() do
-        if game.Workspace.Collectable["Purple Star"] then
+if game.Workspace.Collectable["Purple Star"] then
+    tab1.newToggle("Auto Stars", "Collect all stars orbs (event)", false, function(bool)
+        _G.AutoStars = bool
+        
+        while _G.AutoStars and task.wait() do
             for _, v in pairs(game.Workspace.Collectable["Purple Star"]:GetChildren()) do
                 v:WaitForChild("Touch").Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
             end
         end
-    end
-end)
+    end)
+end
